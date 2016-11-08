@@ -28,7 +28,7 @@ class TicTacToe:
             size = fieldSize
             wn = turtle.Screen()
             self.alex = turtle.Turtle()
-            #self.createSquare(size)
+            self.createSquare(size)
             self.square(size)
             self.square(size*2/3)
             self.square(size/3)
@@ -47,16 +47,20 @@ class TicTacToe:
                 self.alex.forward(size)
                 self.alex.left(90)
 
-        def drawcircle(self, size):
-            #self.alex.setpos(place[0], place[1])
+        def drawcircle(self, size, square):
+            self.alex.penup()
+            self.alex.setpos(self.grid[square][0], self.grid[square][1])
+            self.alex.pendown()
             self.alex.forward(size/6)
             self.alex.circle(size/6)
             self.alex.penup()
             self.alex.setpos(0,0)
             self.alex.pendown()
 
-        def drawx(self, size):
-            #self.alex.setpos(place[0], place[1])
+        def drawx(self, size, square):
+            self.alex.penup()
+            self.alex.setpos(self.grid[square][0], self.grid[square][1])
+            self.alex.pendown()
             self.alex.left(45)
             self.alex.forward(size/3*math.sqrt(2))
             self.alex.left(135)
@@ -71,11 +75,18 @@ class TicTacToe:
             self.alex.pendown()
 
         def createSquare(self, size):
-            Square = namedtuple("Square",(x,y))
-            self.grid = {Square(size*2/3,0):7, Square(size*2/3,size/3):8, Square(size*2/3,size*2/3):9, Square(size/3,0):4, Square(size/3,size/3):5,Square(1,size*2/3):6, Square(0,0):1, Square(0,size/3):2, Square(0,size*2/3):3}
+            self.grid = [(size*2/3,0),(size*2/3,size/3), (size*2/3,size*2/3), (size/3,0), (size/3,size/3),(size/3,size*2/3), (0,0), (0,size/3),(0,size*2/3)]
+            print(self.grid)
+            print(self.grid[1][1])
 
 
     
 
     
-    
+def main():
+        field = TicTacToe(300)
+        while (True):
+                field.drawx(300,int(input("Which square for X: ")))
+                field.drawcircle(300, int(input("Whick square for O: ")))
+
+main()
