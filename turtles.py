@@ -47,16 +47,6 @@ class TicTacToe:
                 self.alex.forward(size)
                 self.alex.left(90)
 
-        def drawcircle(self, size, square):
-            self.alex.penup()
-            self.alex.setpos(self.grid[square][0], self.grid[square][1])
-            self.alex.pendown()
-            self.alex.forward(size/6)
-            self.alex.circle(size/6)
-            self.alex.penup()
-            self.alex.setpos(0,0)
-            self.alex.pendown()
-
         def drawx(self, size, square):
             self.alex.penup()
             self.alex.setpos(self.grid[square][0], self.grid[square][1])
@@ -74,10 +64,6 @@ class TicTacToe:
             self.alex.setpos(0,0)
             self.alex.pendown()
 
-        def createSquare(self, size):
-            self.grid = [(size*2/3,0),(size*2/3,size/3), (size*2/3,size*2/3), (size/3,0), (size/3,size/3),(size/3,size*2/3), (0,0), (0,size/3),(0,size*2/3)]
-            print(self.grid)
-            print(self.grid[1][1])
 
 
     
